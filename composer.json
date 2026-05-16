@@ -1,6 +1,4 @@
- {
-  "name": "mi-api/php",
+{
+  "name": "api/php",
   "require": {}
-
-  
 }
