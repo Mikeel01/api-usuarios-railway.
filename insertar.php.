@@ -1,0 +1,32 @@
+<?php
+// Railway proporciona estas variables automáticamente
+$host = getenv('MYSQLHOST');
+$user = getenv('MYSQLUSER');
+$pass = getenv('MYSQLPASSWORD');
+$db   = getenv('MYSQLDATABASE');
+$port = getenv('MYSQLPORT');
+
+// Conexión a la base de datos
+$conexion = new mysqli($host, $user, $pass, $db, $port);
+
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
+}
+
+// Recibir datos de Android (Volley usa $_POST)
+$nombre   = $_POST['nombre'];
+$email    = $_POST['email'];
+$password = $_POST['password'];
+
+// Consulta SQL
+$query = "INSERT INTO usuarios (nombre, email, password) VALUES ('$nombre', '$email', '$password')";
+$resultado = $conexion->query($query);
+
+if ($resultado) {
+    echo "REGISTRO_EXITOSO";
+} else {
+    echo "ERROR_AL_REGISTRAR: " . $conexion->error;
+}
+
+$conexion->close();
+?>
