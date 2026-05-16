@@ -1,1 +1,3 @@
-<?php echo "API de Usuarios Lista"; ?>
+<?php
+echo "API funcionando correctamente";
+?>
