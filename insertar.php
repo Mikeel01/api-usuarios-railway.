@@ -3,21 +3,11 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-$host = getenv('MYSQLHOST');
-$user = getenv('MYSQLUSER');
-$pass = getenv('MYSQLPASSWORD');
-$db   = getenv('MYSQLDATABASE');
-$port = getenv('MYSQLPORT');
-
-echo $host;
+$database_url = getenv('MYSQL_URL');
 
 try {
 
-    $conexion = new PDO(
-        "mysql:host=$host;port=$port;dbname=$db;charset=utf8",
-        $user,
-        $pass
-    );
+    $conexion = new PDO($database_url);
 
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
