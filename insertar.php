@@ -9,6 +9,8 @@ $pass = getenv('MYSQLPASSWORD');
 $db   = getenv('MYSQLDATABASE');
 $port = getenv('MYSQLPORT');
 
+echo $host;
+
 try {
 
     $conexion = new PDO(
