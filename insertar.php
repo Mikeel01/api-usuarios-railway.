@@ -9,14 +9,9 @@ $pass = getenv('MYSQLPASSWORD');
 $db   = getenv('MYSQLDATABASE');
 $port = getenv('MYSQLPORT');
 
-echo "HOST: " . $host . "<br>";
-echo "USER: " . $user . "<br>";
-echo "DB: " . $db . "<br>";
-echo "PORT: " . $port . "<br>";
-
 try {
 
-    $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=utf8";
+    $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=utf8mb4";
 
     $conexion = new PDO($dsn, $user, $pass);
 
@@ -36,9 +31,7 @@ try {
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':password', $password);
 
-    $resultado = $stmt->execute();
-
-    if ($resultado) {
+    if ($stmt->execute()) {
         echo "REGISTRO_EXITOSO";
     } else {
         echo "ERROR_AL_REGISTRAR";
@@ -49,5 +42,4 @@ try {
     echo "ERROR: " . $e->getMessage();
 
 }
-
 ?>
