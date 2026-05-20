@@ -9,6 +9,11 @@ $pass = getenv('MYSQLPASSWORD');
 $db   = getenv('MYSQLDATABASE');
 $port = getenv('MYSQLPORT');
 
+echo "HOST: " . $host . "<br>";
+echo "USER: " . $user . "<br>";
+echo "DB: " . $db . "<br>";
+echo "PORT: " . $port . "<br>";
+
 try {
 
     $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=utf8";
@@ -44,4 +49,5 @@ try {
     echo "ERROR: " . $e->getMessage();
 
 }
+
 ?>
